@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página de Login</title>
+</head>
+<script>
+
+
+
+    document.addEventListener("DomContentLoaded", function () {
+        const loginButton = document.getElementById("loginButton");
+
+        loginButton.addEventListener("click", function(){
+            const axios = require("axios");
+            const apiURL = "http://localhost:3003/login";
+
+            const user = document.getElementById("username").value;
+            const senha = documento.getElementById("username").value;
+
+            const userData = {
+                Login : user,
+                Senha : senha,
+            }
+            axios.post(apiURL, userData)
+                .then(function (response) {
+                    alert("Acesso liberado!")
+                }) 
+                .catch(function (error) {
+                    alert("Erro ao acessar a conta: "+ error)
+                });
+        })
+    });
+    
+    
+</script>
+<body>
+    <h1>Faça Login</h1>
+
+        <label for="username">Nome de Usuário:</label>
+        <input type="text" id="username" name="username"><br><br>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button id="loginButton">Acessar</button>
+
+</body>
+</html>
